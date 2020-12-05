@@ -53,13 +53,37 @@ public class PassportProcessing {
         int numberOfNPC = 0;
         int numberOfBad = 0;
         for (Map<String, String> pass: allPassports) {
-            if (pass.containsKey("byr")
-                    && pass.containsKey("iyr")
-                    && pass.containsKey("eyr")
-                    && pass.containsKey("hgt")
-                    && pass.containsKey("hcl")
-                    && pass.containsKey("ecl")
-                    && pass.containsKey("pid")
+            if ((pass.containsKey("byr") && (Integer.parseInt(pass.get("byr")) >= 1920) && (Integer.parseInt(pass.get("byr")) <= 2002))
+                    && (pass.containsKey("iyr") && (Integer.parseInt(pass.get("iyr")) >= 2010) && (Integer.parseInt(pass.get("iyr")) <= 2020))
+                    && (pass.containsKey("eyr") && (Integer.parseInt(pass.get("eyr")) >= 2020) && (Integer.parseInt(pass.get("eyr")) <= 2030))
+                    && (pass.containsKey("hgt") &&
+                    (
+                            (
+                                    pass.get("hgt").matches("[0-9]{3}cm")
+                                            && (Integer.parseInt(pass.get("hgt").substring(0, 3)) >= 150)
+                                            && (Integer.parseInt(pass.get("hgt").substring(0, 3)) <= 193)
+
+                            )
+                                    ||
+                                    (
+                                            pass.get("hgt").matches("[0-9]{2}in")
+                                                    && (Integer.parseInt(pass.get("hgt").substring(0, 2)) >= 59)
+                                                    && (Integer.parseInt(pass.get("hgt").substring(0, 2)) <= 76)
+                                    )
+                    )
+            )
+                    && (
+                    pass.containsKey("hcl")
+                            && pass.get("hcl").matches("#[0-9a-f]{6}")
+            )
+                    && (
+                    pass.containsKey("ecl")
+                            && pass.get("ecl").matches("\\b(amb|blu|brn|gry|grn|hzl|oth)\\b")
+            )
+                    && (pass.containsKey("pid")
+                        && pass.get("pid").matches("\\d{9}")
+
+            )
             ) {
                 if ( pass.containsKey("cid")) {
                     numberOfPass++;
