@@ -31,17 +31,23 @@ public class CustomCustoms {
     public static void checkDeclarations(List<String> declarations) {
         Map<Character, Integer> groupDeclaration = getCustomDeclarationForm();
         int numberOfYesForAll = 0;
+        int numberOfPeople = 0;
         System.out.println(declarations);
         for (String declaration: declarations) {
             System.out.println(declaration);
             if (!declaration.equals("")) {
                 for (char question: declaration.toCharArray()) {
-                    groupDeclaration.put(question, 1);
+                    groupDeclaration.put(question, groupDeclaration.get(question) + 1);
                 }
+                numberOfPeople++;
             } else {
-                int numberOfYesForGroup = getNumberOfYesAnswers(groupDeclaration);
+                //int numberOfYesForGroup = getNumberOfYesAnswers(groupDeclaration);
+                int numberOfYesForGroup = getNumberOfYesAnswersForEveryone(groupDeclaration, numberOfPeople);
+
                 System.out.println("GROUP Yes: " +  numberOfYesForGroup);
                 numberOfYesForAll = numberOfYesForAll + numberOfYesForGroup;
+
+                numberOfPeople = 0;
                 groupDeclaration = getCustomDeclarationForm();
             }
         }
@@ -51,6 +57,14 @@ public class CustomCustoms {
 
     public static int getNumberOfYesAnswers(Map<Character, Integer> groupDeclaration) {
         return groupDeclaration.values().stream().mapToInt(Integer::intValue).sum();
+    }
+
+    public static int getNumberOfYesAnswersForEveryone(Map<Character, Integer> groupDeclaration, int numberOfPeople) {
+        return groupDeclaration.values().stream()
+                .filter(i -> i == numberOfPeople)
+                .map(i -> i / numberOfPeople)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public static Map<Character, Integer> getCustomDeclarationForm(){
