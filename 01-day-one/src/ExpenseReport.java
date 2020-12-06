@@ -15,7 +15,6 @@ public class ExpenseReport {
             List<Integer> expenses = stream.map(Integer::parseInt)
                     .collect(Collectors.toList());
             System.out.println("The product of the three entries that sum to 2020: " + findEntries(expenses));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
