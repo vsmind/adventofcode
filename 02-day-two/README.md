@@ -1,4 +1,4 @@
---- Day 2: Password Philosophy ---
+# --- Day 2: Password Philosophy ---
 
 Your flight departs in a few days from the coastal airport; the easiest way down to the coast from here is via toboggan.
 
@@ -22,7 +22,8 @@ In the above example, 2 passwords are valid. The middle password, cdefg, is not;
 
 How many passwords are valid according to their policies?
 
---- Part Two ---
+# --- Part Two ---
+
 While it appears you validated the passwords correctly, they don't seem to be what the Official Toboggan Corporate Authentication System is expecting.
 
 The shopkeeper suddenly realizes that he just accidentally explained the password policy rules from his old job at the sled rental place down the street! The Official Toboggan Corporate Policy actually works a little differently.
