@@ -30,6 +30,7 @@ public class PassportProcessing {
         int allData = 0;
         Map<String, String> passData = new HashMap<String, String>();;
         for (String passportLine: passportData) {
+            System.out.println(passportLine);
             if (passportLine.equals("")) {
                 allPassports.add(passData);
                 passData = new HashMap<String, String>();
