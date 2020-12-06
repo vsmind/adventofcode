@@ -21,6 +21,9 @@ public class BinaryBoarding {
                 changeRange(partition, seatIds);
             }
             System.out.println(Collections.max(seatIds));
+            Collections.sort(seatIds);
+
+            findMissingId(seatIds);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,5 +64,16 @@ public class BinaryBoarding {
 
     public static int seatID(int row, int column) {
         return row * 8 + column;
+    }
+
+    public static void findMissingId(List<Integer> seatId) {
+        int previousNumber = seatId.get(0);
+        for (Integer number: seatId) {
+            if (number - previousNumber > 1){
+                System.out.println("prev: " + previousNumber);
+                System.out.println("next: " + number);
+            }
+            previousNumber = number;
+        }
     }
 }
