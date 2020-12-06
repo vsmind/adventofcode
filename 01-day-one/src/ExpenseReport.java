@@ -14,23 +14,23 @@ public class ExpenseReport {
         try (Stream<String> stream = Files.lines(Paths.get(expenseReportFilePath))){
             List<Integer> expenses = stream.map(Integer::parseInt)
                     .collect(Collectors.toList());
+            System.out.println("The product of the three entries that sum to 2020: " + findEntries(expenses));
 
-            starting_loop:
-            for (Integer expense: expenses ) {
-                for (Integer expenseCopy: expenses) {
-                    for (Integer expenseCopyTwo: expenses) {
-                        if (expense + expenseCopy + expenseCopyTwo == 2020) {
-                            System.out.println(expense);
-                            System.out.println(expenseCopy);
-                            System.out.println(expenseCopyTwo);
-                            System.out.println(expense * expenseCopy * expenseCopyTwo);
-                            break starting_loop;
-                        }
-                    }
-                }
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int findEntries(List<Integer> expenses) {
+        for (Integer expense: expenses ) {
+            for (Integer expenseCopy: expenses) {
+                for (Integer expenseCopyTwo: expenses) {
+                    if (expense + expenseCopy + expenseCopyTwo == 2020) {
+                        return expense * expenseCopy * expenseCopyTwo;
+                    }
+                }
+            }
+        }
+        return 0;
     }
 }
