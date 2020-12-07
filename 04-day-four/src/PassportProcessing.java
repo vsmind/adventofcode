@@ -18,9 +18,7 @@ public class PassportProcessing {
         try (Stream<String> stream = Files.lines(Paths.get(inputFile))){
             List<String> passportData = stream.collect(Collectors.toList());
             readPassportData(passportData, allPassports);
-            //System.out.println(passportData.get(passportData.size() - 1));
-            System.out.println("Valid passports: " + findValidPassports(allPassports));
-
+            System.out.println("Valid passports: " + findNumberOfValidPassports(allPassports));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,10 +28,10 @@ public class PassportProcessing {
         int allData = 0;
         Map<String, String> passData = new HashMap<String, String>();;
         for (String passportLine: passportData) {
-            System.out.println(passportLine);
+            //System.out.println(passportLine);
             if (passportLine.equals("")) {
                 allPassports.add(passData);
-                passData = new HashMap<String, String>();
+                passData = new HashMap<>();
                 allData++;
             }
             if (!passportLine.equals("")) {
@@ -49,10 +47,10 @@ public class PassportProcessing {
         System.out.println("Total data read: " + (allData + 1));
     }
 
-    private static int findValidPassports(List<Map<String, String>> allPassports) {
-        int numberOfPass = 0;
+    private static int findNumberOfValidPassports(List<Map<String, String>> allPassports) {
+        int numberOfValidPassports = 0;
         int numberOfNPC = 0;
-        int numberOfBad = 0;
+        int numberOfInvalidPassports = 0;
         for (Map<String, String> pass: allPassports) {
             if ((pass.containsKey("byr") && (Integer.parseInt(pass.get("byr")) >= 1920) && (Integer.parseInt(pass.get("byr")) <= 2002))
                     && (pass.containsKey("iyr") && (Integer.parseInt(pass.get("iyr")) >= 2010) && (Integer.parseInt(pass.get("iyr")) <= 2020))
@@ -87,23 +85,17 @@ public class PassportProcessing {
             )
             ) {
                 if ( pass.containsKey("cid")) {
-                    numberOfPass++;
-                    //System.out.println(pass.keySet());
+                    numberOfValidPassports++;
                 } else {
-                    //System.out.println("North Pole Credentials");
-                    //System.out.println(pass.keySet());
-                    numberOfPass++;
+                    numberOfValidPassports++;
                     numberOfNPC++;
                 }
             } else {
-                //System.out.println("Not a vailid pass");
-                //System.out.println(pass.keySet());
-                numberOfBad++;
+                numberOfInvalidPassports++;
             }
         }
-        System.out.println("North Pole Credentials: " + numberOfNPC);
-        System.out.println("Bad pass: " + numberOfBad);
-        return numberOfPass;
+        System.out.println("North Pole Credentials  : " + numberOfNPC);
+        System.out.println("Invalid Passports       : " + numberOfInvalidPassports);
+        return numberOfValidPassports;
     }
-
 }
