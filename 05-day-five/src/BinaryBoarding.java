@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 public class BinaryBoarding {
 
     public static void main(String[] args) {
-        String inputFile = "day-five/src/input";
-        //String inputFile = "day-five/src/inputTest";
-        //String inputFile = "day-five/src/inputExample";
+        String inputFile = "05-day-five/src/input";
+        //String inputFile = "05-day-five/src/inputTest";
+        //String inputFile = "05-day-five/src/inputExample";
         ArrayList<Integer> seatIds = new ArrayList<>();
 
         try (Stream<String> stream = Files.lines(Paths.get(inputFile))){
@@ -20,16 +20,16 @@ public class BinaryBoarding {
             for (String partition: partitions) {
                 changeRange(partition, seatIds);
             }
-            System.out.println(Collections.max(seatIds));
+            System.out.println("The highest seat ID:    " + Collections.max(seatIds));
             Collections.sort(seatIds);
 
-            findMissingId(seatIds);
+            System.out.println("ID of your seat:        " + findMissingId(seatIds));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void changeRange(String partition, ArrayList<Integer> seats) {
+    private static void changeRange(String partition, ArrayList<Integer> seats) {
         int minRange = 0;
         int maxRange = 127;
         int half = 64;
@@ -62,18 +62,20 @@ public class BinaryBoarding {
         }
     }
 
-    public static int seatID(int row, int column) {
+    private static int seatID(int row, int column) {
         return row * 8 + column;
     }
 
-    public static void findMissingId(List<Integer> seatId) {
+    private static int findMissingId(List<Integer> seatId) {
         int previousNumber = seatId.get(0);
         for (Integer number: seatId) {
             if (number - previousNumber > 1){
-                System.out.println("prev: " + previousNumber);
-                System.out.println("next: " + number);
+                //System.out.println("prev: " + previousNumber);
+                //System.out.println("next: " + number);
+                return number - 1;
             }
             previousNumber = number;
         }
+        return 0;
     }
 }
