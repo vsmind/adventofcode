@@ -113,8 +113,8 @@ fun prepareOriginalInstructionsList(input: List<String>): MutableList<Instructio
         val instructionFromInput = Instruction(readInstruction[0],
                 readInstruction[1].substring(0, 1),
                 readInstruction[1].substring(1).toInt(),
-                0);
+                0)
         instructionList.add(instructionFromInput)
     }
-    return instructionList;
+    return instructionList
 }
