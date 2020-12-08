@@ -16,10 +16,12 @@ public class HandyHaversacks {
             HashMap<String, Bags> allBags = new HashMap<>();
             parseRules(bagRules, allBags);
 
-            //int count = 0;
             HashSet<String> search = new HashSet<>();
             HashSet<String> allSearched = new HashSet<>();
             search.add("shiny gold");
+
+            //Part one
+            //int count = 0;
             //System.out.println("************************************");
             //System.out.println("Count: " + bottomUp(count, allBags.values(), search, allSearched));
             //findShinyGoldBag(allBags);
@@ -51,7 +53,8 @@ public class HandyHaversacks {
         }
     }
 
-    public static int bottomUp(int count, Collection<Bags> allBags, HashSet<String> search, HashSet<String> allSearched) {
+    //part one
+    private static int bottomUp(int count, Collection<Bags> allBags, HashSet<String> search, HashSet<String> allSearched) {
         HashSet<String> theNewSearch = new HashSet<>();
         for (String srch: search){
             if (!allSearched.contains(srch)) {
@@ -78,7 +81,7 @@ public class HandyHaversacks {
         return count;
     }
 
-    public static void parseRules(List<String> bagRules, HashMap<String, Bags> allBags) {
+    private static void parseRules(List<String> bagRules, HashMap<String, Bags> allBags) {
         for (String rule: bagRules) {
             String[] ruleDeclaration = rule.split("contain");
             String bagColorCode = ruleDeclaration[0].replace("bags", "").trim();
@@ -92,28 +95,4 @@ public class HandyHaversacks {
             allBags.put(bag.bagColorCode, bag);
         }
     }
-
-//    public static void findShinyGoldBag(HashMap<String, Bags> allBags) {
-//        int numberOfBagColorsThatCanEventuallyContainAtLeastOneShinyGoldBag = 0;
-//        for (Bags bag: allBags.values()) {
-//            numberOfBagColorsThatCanEventuallyContainAtLeastOneShinyGoldBag = numberOfBagColorsThatCanEventuallyContainAtLeastOneShinyGoldBag
-//                    + checkBags(bag, allBags);
-//        }
-//
-//        System.out.println("Number of bag colors that can eventually contain at least one shiny gold bag is: "
-//                + numberOfBagColorsThatCanEventuallyContainAtLeastOneShinyGoldBag);
-//    }
-
-//    public static int checkBags(Bags bag, HashMap<String, Bags> allBags) {
-//            for (String bagColor: bag.bagContent.keySet()) {
-//                Bags bagToCheck = allBags.get(bagColor);
-//                if (bagToCheck.bagContent.containsKey("shiny gold")) {
-//                    return 1;
-//                } else {
-//                    checkBags(bagToCheck, allBags);
-//                }
-//            }
-//        return 0;
-//    }
-
 }
