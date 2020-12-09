@@ -20,11 +20,11 @@ public class HandyHaversacks {
             HashSet<String> allSearched = new HashSet<>();
             search.add("shiny gold");
 
-            //Part one
-            //int count = 0;
-            //System.out.println("************************************");
-            //System.out.println("Count: " + bottomUp(count, allBags.values(), search, allSearched));
-            //findShinyGoldBag(allBags);
+            /*Part one
+            int count = 0;
+            System.out.println("************************************");
+            System.out.println("Count: " + bottomUp(count, allBags.values(), search, allSearched));
+            findShinyGoldBag(allBags);*/
 
             LinkedList<Bags> searchNumber = new LinkedList<>();
             searchNumber.add(allBags.get("shiny gold"));
@@ -60,20 +60,14 @@ public class HandyHaversacks {
             if (!allSearched.contains(srch)) {
             for (Bags bags: allBags) {
                 if (bags.bagContent.containsKey(srch)){
-                    System.out.println(bags.bagColorCode);
                     theNewSearch.add(bags.bagColorCode);
                     count++;
                 }
             }
             }
         }
-        System.out.println("//////////////////////////////////");
-        System.out.println("new search " + theNewSearch);
-        System.out.println("allSearched " + allSearched);
-        System.out.println("allSearched " + allSearched.size());
         allSearched.addAll(search);
         if (theNewSearch.isEmpty()) {
-            System.out.println("return count is:" + count);
             return count;
         } else {
             bottomUp(count, allBags, theNewSearch, allSearched);
@@ -88,10 +82,6 @@ public class HandyHaversacks {
             HashMap<String, Integer> bagsMap = new HashMap<>();
             Bags bag = new Bags(bagColorCode, bagsMap);
             bag.getBagsContain(ruleDeclaration[1]);
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            System.out.println(bag.bagColorCode);
-            System.out.println(bag.bagContent);
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
             allBags.put(bag.bagColorCode, bag);
         }
     }

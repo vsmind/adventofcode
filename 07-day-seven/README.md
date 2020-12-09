@@ -33,6 +33,8 @@ So, in this example, the number of bag colors that can eventually contain at lea
 **How many bag colors can eventually contain at least one shiny gold bag?**
 (The list of rules is quite long; make sure you get all of it.)
 
+> *Your puzzle answer was **205**.*
+
 # --- Part Two ---
 It's getting pretty expensive to fly these days - not because of ticket prices, but because of the ridiculous number of bags you need to buy!
 
@@ -62,3 +64,5 @@ dark violet bags contain no other bags.
 In this example, a single shiny gold bag must contain 126 other bags.
 
 How many individual bags are required inside your single shiny gold bag?
+
+> *Your puzzle answer was **80902**.*
