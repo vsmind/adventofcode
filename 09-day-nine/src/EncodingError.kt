@@ -9,18 +9,55 @@ fun main() {
 
     println(preparedInput)
 
-    findNotASumNumber(preamble, preparedInput)
+    val sumToFind = findNotASumNumber(preamble, preparedInput)
+
+    val sequenceForSum = findSequenceForSum(sumToFind, preparedInput)
+    val encryptionWeakness = sequenceForSum.minOrNull()?.plus(sequenceForSum.maxOrNull()!!)
+    println("Encryption weakness: $encryptionWeakness")
 }
 
-fun findNotASumNumber(preamble: Int, input: List<Long>) {
+fun findSequenceForSum(sumToFind :Long, input: List<Long>) : List<Long> {
+    val sumSequence = mutableListOf<Long>()
+    for (value in input) {
+        when {
+            sumSequence.sum().plus(value) < sumToFind -> {
+                sumSequence.add(value)
+            }
+            sumSequence.sum().plus(value) > sumToFind -> {
+                removeElementsFromArray(sumToFind, value, sumSequence)
+                sumSequence.add(value)
+            }
+            else -> {
+                println("Something went wrong :(")
+            }
+        }
+
+            if (sumSequence.sum() == sumToFind) {
+            println("SEQUENCE")
+
+            return sumSequence
+        }
+    }
+    return emptyList()
+}
+
+fun removeElementsFromArray( sumToFind: Long, nextValue: Long,  sumSequence: MutableList<Long>)  {
+    while (sumSequence.sum().plus(nextValue) > sumToFind) {
+        sumSequence.removeFirst()
+    }
+}
+
+fun findNotASumNumber(preamble: Int, input: List<Long>) : Long {
     for (i in preamble until input.size) {
         val preambleList = findPreamble(preamble, i, input)
 
         val numberFollowsRule = isNumberFollowsRule(input[i], preambleList)
         if (!numberFollowsRule) {
             println("number not follows rule: " + input[i])
+            return input[i]
         }
     }
+    return 0
 }
 
 fun isNumberFollowsRule(numberToCheck: Long, preambleList: List<Long>) : Boolean {
