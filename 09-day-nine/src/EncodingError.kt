@@ -7,10 +7,7 @@ fun main() {
     val preparedInput = input.map { it.toLong() }
     val preamble = 25
 
-    println(preparedInput)
-
     val sumToFind = findNotASumNumber(preamble, preparedInput)
-
     val sequenceForSum = findSequenceForSum(sumToFind, preparedInput)
     val encryptionWeakness = sequenceForSum.minOrNull()?.plus(sequenceForSum.maxOrNull()!!)
     println("Encryption weakness: $encryptionWeakness")
@@ -32,9 +29,7 @@ fun findSequenceForSum(sumToFind :Long, input: List<Long>) : List<Long> {
             }
         }
 
-            if (sumSequence.sum() == sumToFind) {
-            println("SEQUENCE")
-
+        if (sumSequence.sum() == sumToFind) {
             return sumSequence
         }
     }
@@ -53,7 +48,7 @@ fun findNotASumNumber(preamble: Int, input: List<Long>) : Long {
 
         val numberFollowsRule = isNumberFollowsRule(input[i], preambleList)
         if (!numberFollowsRule) {
-            println("number not follows rule: " + input[i])
+            println("Number not follows rule: " + input[i])
             return input[i]
         }
     }

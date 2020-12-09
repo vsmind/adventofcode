@@ -1,5 +1,7 @@
 # Advent of code 2020
 
+## Readmes for daily task
+
 - [Day 1: Report Repair](01-day-one/README.md)
 - [Day 2: Password Philosophy](02-day-two/README.md)
 - [Day 3: Toboggan Trajectory](03-day-three/README.md)
@@ -8,6 +10,8 @@
 - [Day 6: Custom Customs](06-day-six/README.md)
 - [Day 7: Handy Haversacks](07-day-seven/README.md)
 - [Day 8: Handheld Halting](08-day-eight/README.md)
+- [Day 9: Encoding Error](09-day-nine/README.md)
 
 ---
+
 [Advent of code 2020](http://adventofcode.com/2020)
