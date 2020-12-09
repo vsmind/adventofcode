@@ -1,4 +1,4 @@
-#--- Day 4: Passport Processing ---
+# --- Day 4: Passport Processing ---
 
 You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren't issued by a country and therefore aren't actually valid documentation for travel in most of the world.
 
