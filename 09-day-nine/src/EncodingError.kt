@@ -1,6 +1,4 @@
-import com.sun.org.apache.xpath.internal.operations.Bool
 import java.io.File
-import java.text.FieldPosition
 
 fun main() {
     //val input = readInput("09-day-nine/src/inputTest")
