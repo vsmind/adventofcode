@@ -5,6 +5,7 @@ fun main() {
     val fields = mutableListOf<TicketField>()
     val yourTicket = mutableListOf<Int>()
     val nearbyTickets = mutableListOf<List<Int>>()
+    val validNearbyTickets = mutableListOf<List<Int>>()
 
     parseInput(input, fields, yourTicket, nearbyTickets)
 
@@ -33,7 +34,7 @@ fun main() {
 
 
     for (ticket in nearbyTickets) {
-         for (field in ticket) {
+        for (field in ticket) {
 //            if (field !in fields[index].ruleOneLow..fields[index].ruleOneHigh && field !in fields[index].ruleTwoLow..fields[index].ruleTwoHigh) {
 //                sum+=field
 //            }
@@ -45,6 +46,15 @@ fun main() {
 
     println("***************************************")
     println("SUM:   $sum")
+
+    for (ticket in nearbyTickets) {
+        if (ticket.all { it in allRules }) {
+            validNearbyTickets.add(ticket)
+        }
+    }
+    println("***************************************")
+    println("Valid tickets:   ${validNearbyTickets.size}")
+    println(validNearbyTickets)
 }
 
 fun parseInput(input: List<String>, fields: MutableList<TicketField>, yourTicket: MutableList<Int>, nearbyTickets: MutableList<List<Int>>) {
