@@ -26,7 +26,7 @@ public class PassportProcessing {
 
     private static void readPassportData(List<String> passportData, List<Map<String, String>> allPassports){
         int allData = 0;
-        Map<String, String> passData = new HashMap<String, String>();;
+        Map<String, String> passData = new HashMap<>();
         for (String passportLine: passportData) {
             //System.out.println(passportLine);
             if (passportLine.equals("")) {
