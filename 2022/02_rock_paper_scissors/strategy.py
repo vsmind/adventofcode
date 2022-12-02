@@ -1,21 +1,27 @@
-result = {
-    "A": {"X": 3, "Y": 6, "Z": 0},  # ROCK
-    "B": {"X": 0, "Y": 3, "Z": 6},  # PAPER
-    "C": {"X": 6, "Y": 0, "Z": 3}   # SCISSORS
-        }
+result_point = {
+    "X": 0,  # LOSE
+    "Y": 3,  # DRAW
+    "Z": 6  # WIN
+}
+
+results = {
+    "A": {0: "C", 3: "A", 6: "B"},  # ROCK
+    "B": {0: "A", 3: "B", 6: "C"},  # PAPER
+    "C": {0: "B", 3: "C", 6: "A"},  # SCISSORS
+}
+
+shape_result = {
+    "A": 1,
+    "B": 2,
+    "C": 3,
+}
 
 
-def calculate(openent, me):
-    return shape_score(me) + result[openent][me]
-
-
-def shape_score(shape):
-    if shape == "X":  # Rock
-        return 1
-    elif shape == "Y":  # Paper
-        return 2
-    else:  # Scissors
-        return 3
+def calculate_two(openent, me):
+    round_result = result_point[me]
+    play_result = shape_result[results[openent][round_result]]
+    print(play_result, "+", round_result)
+    return round_result + play_result
 
 
 def main():
@@ -25,7 +31,7 @@ def main():
     for line in strategy:
         play = line.strip().split(" ")
         print(play)
-        total_score += calculate(play[0], play[1])
+        total_score += calculate_two(play[0], play[1])
     print(total_score)
 
 
