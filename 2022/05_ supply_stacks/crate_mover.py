@@ -12,15 +12,15 @@ def top():
     parse_input(input, stacks_position, stacks, orders)
     print("Stacks:", stacks)
     print("Orders:", orders)
-    rearrangement_procedure(stacks, orders)
+    rearrangement_procedure_9001(stacks, orders)
     print("Rearange:", stacks)
     top_stacks(stacks)
 
 
-def rearrangement_procedure(stacks, orders):
+def rearrangement_procedure_9001(stacks, orders):
     for order in orders:
-        for i in range(int(order[0])):
-            stacks[int(order[2]) - 1].append(stacks[int(order[1]) - 1].pop())
+        stacks[int(order[2]) - 1].extend(stacks[int(order[1]) - 1][-int(order[0]):])
+        del stacks[int(order[1]) - 1][-int(order[0]):]
 
 
 if __name__ == "__main__":
