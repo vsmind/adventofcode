@@ -7,4 +7,5 @@
 - [Day 3: Rucksack Reorganization](03_rucksack_reorganization/) :star: :star:
 - [Day 4: Camp Cleanup](04_camp_cleanup/) :star: :star:
 - [Day 5: Supply Stacks](05_supply_stacks) :star: :star:
-- [Day 6: Tuning Trouble](05_supply_stacks) :star: :star:
+- [Day 6: Tuning Trouble](06_tuning_trouble) :star: :star:
+- [Day 7: No Space Left On Device](07_no_space_left_on_device) :star: :star:
