@@ -46,7 +46,6 @@ def noop_instruction(register, signal_strength, output_line):
 
 
 def draw_pixel(register, output_line):
-    #print(register["cycle"], register["crt"], register["x"], register["x"] + 1, register["x"] + 2)
     if register["crt"] in [register["x"] - 1, register["x"] , register["x"] + 1]:
         output_line.append("#")
     else:
