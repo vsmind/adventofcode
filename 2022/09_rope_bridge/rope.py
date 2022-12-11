@@ -26,58 +26,58 @@ def follow_the_path(path):
     tail_position = {"x": 0, "y": 0}
     where_the_tail_was = []
     for step in path:
-        #print(step)
-        move_directoin(step, starting_position, where_the_tail_was, tail_position)
-    #no_dub = [dict(t) for t in {tuple(d.items()) for d in where_the_tail_was}]
+        move_direction(step, starting_position, where_the_tail_was, tail_position)
     no_dub = reduce(lambda re, x: re+[x] if x not in re else re, where_the_tail_was, [])
-    #for i in where_the_tail_was:
-    #    print(i)
-    #print("_____")
-
-
-    #for b in no_dub:
-    #    print(b)
     print(len(no_dub))
 
-def move_directoin(steps, position, where_the_tail_was, tail_position):
+
+def move_direction(steps, position, where_the_tail_was, tail_position):
+    """
+    Move rope position
+
+    :steps: previous position for head
+    :position: x position
+    :where_the_tail_was: y position
+    :tail_position:
+    """
     step = 0
     head_previous_position = {"x": 0, "y": 0}
     while step < int(steps["value"]):
-        #print(steps["direction"], steps["value"], step)
         update_head_previous_position(head_previous_position, position["x"], position["y"])
         match steps["direction"]:
             case "U":
                 position["y"] += 1
-                #print("top")
             case "D":
                 position["y"] -= 1
-                #print("down")
             case "L":
                 position["x"] -= 1
-                #print("Left")
             case "R":
                 position["x"] += 1
-                #print("Right")
         check_tail(position, head_previous_position, tail_position)
         where_the_tail_was.append({"x": tail_position["x"], "y": tail_position["y"]})
-        #if tail_position not in where_the_tail_was:
-        #    where_the_tail_was.append({"x": tail_position["x"], "y": tail_position["y"]})
-        #print("Tail was", where_the_tail_was)
-        #print("________________________")
         step += 1
 
 
 def update_head_previous_position(head_previous_position, x, y):
+    """
+    Update previous head position
+
+    :head_previous_position: previous position for head
+    :x: x position
+    :y: y position
+    """
     head_previous_position["x"] = x
     head_previous_position["y"] = y
 
 
 def check_tail(head_position, head_previous_position, tail_position):
-    #print("Head", head_position)
-    #print("Head prev", head_previous_position)
-    #print("Tail position", tail_position)
-    #print()
-    #print("Y max", max([abs(head_position["y"]), abs(tail_position["y"])]) - min([abs(head_position["y"]), abs(tail_position["y"])]))
+    """
+    Check if tail should be moved and move it to the previous head position
+
+    :head_position: head position
+    :head_previous_position: previous position for head
+    :tail_position: tail position
+    """
     x_array = [head_position["x"], tail_position["x"]]
     x_change = max(x_array) - min(x_array)
     y_array = [head_position["y"], tail_position["y"]]
@@ -85,7 +85,6 @@ def check_tail(head_position, head_previous_position, tail_position):
     if x_change > 1 or y_change > 1:
         tail_position["x"] = head_previous_position["x"]
         tail_position["y"] = head_previous_position["y"]
-    #print("UPDATED TAIL", tail_position)
 
 
 if __name__ == "__main__":
