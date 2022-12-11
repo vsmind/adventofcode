@@ -25,5 +25,5 @@ def find_start(sequence, line):
             return i + sequence
 
 
-if __name__ == "__main__": # 2615 to low
+if __name__ == "__main__":
     start_packet_position()
