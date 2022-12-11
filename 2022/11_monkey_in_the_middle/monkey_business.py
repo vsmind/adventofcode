@@ -65,19 +65,41 @@ def throws_an_item(worry_level, monkey, monkeys):
 
 
 def monkey_inspection(monkey, monkeys):
+    #print("Monkey Items", monkey["items"])
     for item_num in range(0, len(monkey["items"])):
         worry_level = calculate_worry_level(monkey["items"].pop(0), monkey["operation"])
-        worry_level = bored_monkey(worry_level)
+        # worry_level = bored_monkey(worry_level)
         throws_an_item(worry_level, monkey, monkeys)
-        monkey["inspected"] +=1
+        monkey["inspected"] += 1
 
+
+def get_lcm(monkeys):
+    lcm = math.lcm(*[item["test"] for item in monkeys])
+    print(lcm)
+    return lcm
 
 
 def monkey_business(monkeys):
     monkey_round = 0
-    while monkey_round < 20:
+    lcm = get_lcm(monkeys)
+    #print("lcm", lcm)
+    while monkey_round < 10000:
+        #print("Rount", monkey_round)
         for monkey in monkeys:
-            monkey_inspection(monkey,monkeys)
+            monkey_inspection(monkey, monkeys)
+
+        for monkey in monkeys:
+            #print("Monkey item:", monkey["items"])
+            updated_items = []
+            for item in monkey["items"]:
+                item = item % lcm
+                updated_items.append(item)
+            monkey["items"].clear()
+            monkey["items"] = updated_items
+            #print("Monkey item:", monkey["items"])
+
+
+
         monkey_round += 1
 
 
@@ -88,6 +110,7 @@ def monkeys_inspection():
     monkey_business(monkeys)
     print(monkeys)
     inspected_items = [n["inspected"] for n in monkeys]
+    print(inspected_items)
     inspected_items.sort()
     print(inspected_items[-1] * inspected_items[-2])
 

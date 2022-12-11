@@ -9,3 +9,7 @@
 - [Day 5: Supply Stacks](05_supply_stacks) :star: :star:
 - [Day 6: Tuning Trouble](06_tuning_trouble) :star: :star:
 - [Day 7: No Space Left On Device](07_no_space_left_on_device) :star: :star:
+- [Day 8: Treetop Tree House](08_treetop_tree_house) :star: :star:
+- [Day 9: Rope Bridge](09_rope_bridge) :star: :star:
+- [Day 10: Monkey in the Middle](10_cathode_ray_tube) :star: :star:
+- [Day 11: Monkey in the Middle](11_monkey_in_the_middle) :star: :star:

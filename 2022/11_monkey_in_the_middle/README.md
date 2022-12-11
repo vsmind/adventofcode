@@ -1,4 +1,6 @@
-# --- Day 11: Monkey in the Middle ---
+# --- Day 11: Monkey in the Middle ---`
+
+## --- Part One ---
 As you finally start making your way upriver, you realize your pack is much lighter than you remember. Just then, one of the items from your pack goes flying overhead. Monkeys are playing Keep Away with your missing things!
 
 To get your stuff back, you need to be able to predict where the monkeys will throw your items. After some careful observation, you realize the monkeys operate based on how worried you are about each item.
@@ -292,7 +294,7 @@ Monkey 0 inspected items 52166 times.
 Monkey 1 inspected items 47830 times.
 Monkey 2 inspected items 1938 times.
 Monkey 3 inspected items 52013 times.`
-``
+```
 After 10000 rounds, the two most active monkeys inspected items 52166 and 52013 times. Multiplying these together, the level of monkey business in this situation is now 2713310158.
 
 **Worry levels are no longer divided by three after each item is inspected; you'll need to find another way to keep your worry levels manageable. Starting again from the initial state in your puzzle input, what is the level of monkey business after 10000 rounds?**

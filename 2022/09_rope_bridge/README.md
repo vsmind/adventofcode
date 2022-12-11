@@ -1,4 +1,7 @@
---- Day 9: Rope Bridge ---
+# --- Day 9: Rope Bridge ---
+
+## --- Part One ---
+
 This rope bridge creaks as you walk along it. You aren't sure how old it is, or whether it can even support your weight.
 
 It seems to support the Elves just fine, though. The bridge spans a gorge which was carved out by the massive river far below you.
@@ -10,7 +13,7 @@ Consider a rope with a knot at each end; these knots mark the head and the tail 
 Due to nebulous reasoning involving Planck lengths, you should be able to model the positions of the knots on a two-dimensional grid. Then, by following a hypothetical series of motions (your puzzle input) for the head, you can determine how the tail will move.
 
 Due to the aforementioned Planck lengths, the rope must be quite short; in fact, the head (H) and tail (T) must always be touching (diagonally adjacent and even overlapping both count as touching):
-``
+```
 ....
 .TH.
 ....
@@ -25,7 +28,7 @@ Due to the aforementioned Planck lengths, the rope must be quite short; in fact,
 ...
 ```
 If the head is ever two steps directly up, down, left, or right from the tail, the tail must also move one step in that direction so it remains close enough:
-``
+```
 .....    .....    .....
 .TH.. -> .T.H. -> ..TH.
 .....    .....    .....
@@ -66,7 +69,7 @@ R 2
 This series of motions moves the head right four steps, then up four steps, then left three steps, then down one step, and so on. After each step, you'll need to update the position of the tail if the step means the head is no longer adjacent to the tail. Visually, these motions occur as follows (s marks the starting position as a reference point):
 
 == Initial State ==
-``
+```
 ......
 ......
 ......
@@ -241,7 +244,7 @@ After simulating the rope, you can count up all of the positions the tail visite
 .####.
 ....#.
 s###..
-``
+```
 So, there are 13 positions the tail visited at least once.
 
 **Simulate your comple`te hypothetical series of motions. How many positions does the tail of the rope visit at least once?**
@@ -436,7 +439,7 @@ D 10
 L 25
 U 20
 These motions occur as follows (individual steps are not shown):
-``
+```
 == Initial State ==
 
 ..........................
@@ -676,5 +679,5 @@ Now, the tail (9) visits 36 positions (including s) at least once:
 .......#..........#.......
 ........#........#........
 .........########.........
-``
+```
 **Simulate your complete series of motions on a larger rope with ten knots. How many positions does the tail of the rope visit at least once?**
