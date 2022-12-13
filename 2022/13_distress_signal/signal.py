@@ -9,6 +9,7 @@ def parse_input(input_file):
 
 
 def compare(left, right):
+
     print("LEFT", left)
     print("RIGHT", right)
 
@@ -23,16 +24,16 @@ def compare(left, right):
     if type(left) == list and type(right) == list:
         if len(left) > 0 and len(right) > 0:
             for i in range(len(left)):
+                # If we are out of elements in right array
                 if len(right) == 0:
                     return -1
+
                 result = compare(left.pop(0), right.pop(0))
                 if result == 1:
                     return 1
-                elif result == -1:
+                if result == -1:
                     return -1
 
-            #if len(left) == 0:
-            #    return 1
         elif len(left) == 0:
             return 1
         elif len(right) == 0:
@@ -42,17 +43,27 @@ def compare(left, right):
             left = [ left ]
         else:
             right = [ right ]
+
+        if len(left) == 0:
+            return 1
+        if len(right) == 0:
+            return -1
         return compare(left.pop(0), right.pop(0))
 
+    if len(left) == 0 and len(right) > 0:
+        return 1
 
 def check_signal(signal_file):
+    sum_of_the_indices = []
     for i, pairs_of_packets in enumerate(signal_file):
         if compare(pairs_of_packets[0], pairs_of_packets[1]) == 1:
             print("OK", i+1)
+            sum_of_the_indices.append(i+1)
+    print("Sum_of_the_indices", sum(sum_of_the_indices))
 
 
 def signal():
-    signal_file = parse_input("input_test")
+    signal_file = parse_input("input")
     print(signal_file[0][0])
     check_signal(signal_file)
 
