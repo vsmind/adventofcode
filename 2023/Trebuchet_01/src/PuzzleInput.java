@@ -1,4 +1,8 @@
 public class PuzzleInput {
+
+    public static String test = """
+            ninezfcrvxfnjd6nine
+            """;
     public static String inputTest = """
             1abc2
             pqr3stu8vwx
